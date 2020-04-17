@@ -1,11 +1,10 @@
 package com.koro.dbtiminganalysis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -13,8 +12,9 @@ import javax.persistence.Table;
 public class Employee {
 
     @Id
-    @JsonProperty("id")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
+    private Long id;
 
     @JsonProperty("first_name")
     private String firstName;
@@ -30,7 +30,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String id, String firstName, String lastName, String email, String gender, String ipAddress) {
+    public Employee(Long id, String firstName, String lastName, String email, String gender, String ipAddress) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,11 +39,11 @@ public class Employee {
         this.ipAddress = ipAddress;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

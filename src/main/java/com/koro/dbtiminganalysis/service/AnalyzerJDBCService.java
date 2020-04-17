@@ -36,21 +36,20 @@ public class AnalyzerJDBCService {
 
             statement = con.prepareStatement(
                     "INSERT INTO employee" +
-                            "(id, " +
+                            "( " +
                             "email, " +
                             "first_name, " +
                             "gender," +
                             "ip_address," +
                             "last_name) " +
-                            "VALUES (?, ?, ?, ?, ?, ?);");
+                            "VALUES (?, ?, ?, ?, ?);");
 
             for(Employee item : employeeList){
-                statement.setString(1, item.getId());
-                statement.setString(2, item.getEmail());
-                statement.setString(3, item.getFirstName());
-                statement.setString(4, item.getGender());
-                statement.setString(5, item.getIpAddress());
-                statement.setString(6, item.getLastName());
+                statement.setString(1, item.getEmail());
+                statement.setString(2, item.getFirstName());
+                statement.setString(3, item.getGender());
+                statement.setString(4, item.getIpAddress());
+                statement.setString(5, item.getLastName());
                 statement.addBatch();
             }
             statement.executeBatch();

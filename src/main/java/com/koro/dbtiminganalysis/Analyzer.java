@@ -41,12 +41,12 @@ public class Analyzer {
         List<EmployeeDocument> employeeDocumentList = csvFileService.readFromCsvFile(EmployeeDocument.class);
 
         //remotemysql.com with Hiberante
-        analyzerService.saveToDb(employeeList);
-        analyzerService.readFromDb();
+//        analyzerService.saveToDb(employeeList);
+//        analyzerService.readFromDb();
 
         //remotemysql.com with JDBC
-//        analyzerJDBCService.saveToDb(employeeList);
-//        analyzerJDBCService.readFromDb();
+        analyzerJDBCService.saveToDb(employeeList);
+        analyzerJDBCService.readFromDb();
 
         //MongoDB
 //        analyzerMongoDbService.saveToDb(employeeDocumentList);
